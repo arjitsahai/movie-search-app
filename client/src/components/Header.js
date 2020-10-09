@@ -1,8 +1,10 @@
 import React from "react";
-const Header = (props) => {
+import { SearchContext } from './App';
+const Header = () => {
+    const {state, reload} = React.useContext(SearchContext);
     return (
-        <header className="App-header">
-            <h1>{props.text}</h1>
+        <header className="App-header" onClick={reload}>
+            <h1>{state.text}</h1>
         </header>
     );
 };
