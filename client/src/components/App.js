@@ -42,8 +42,8 @@ const App = () => {
 
   useEffect(()=> {
     fetch(MOVIE_API_URL)
-      .then(response => response.json())
-      .then(jsonResponse => {
+      .then((response) => response.json())
+      .then((jsonResponse) => {
         dispatch({
           type: "SEARCH_MOVIES_SUCCESS",
           payload: jsonResponse.Search
@@ -57,8 +57,8 @@ const App = () => {
     });
 
     fetch(` http://www.omdbapi.com/?s=${searchValue}&apikey=24df75e3`)
-      .then(response => response.json())
-      .then(jsonResponse => {
+      .then((response) => response.json())
+      .then((jsonResponse) => {
         if (jsonResponse.Response === "True") {
           dispatch({
             type: "SEARCH_MOVIES_SUCCESS",
@@ -74,25 +74,31 @@ const App = () => {
   };
 
   const { movies, errorMessage, loading } = state;
+  
 
-return (
-  <div className="App">
-    <Header text="MOVIELIST" />
-    <Search search = {search} />
-    <p className="App-intro">Favourite Movies</p>
-    <div className="movies">
-      if ({loading && !errorMessage}){
-        <span>loading...</span>
-      } else if ({errorMessage}){
-        <div className="errorMessage">{ errorMessage }</div>
-      } else {
-        movies.map((movie, index) => (
-          <Movie key = {`${index}-${movie.Title}`} movie = {movie} />
-        ))
-      }
+  const retrievedMovies =
+    loading && !errorMessage ? (
+      <span>loading...</span>
+    ) : errorMessage ? (
+      <div className="errorMessage">{errorMessage}</div>
+    ) : (
+      movies.map((movie, index) => (
+        <Movie key={`${index}-${movie.Title}`} movie={movie} />
+      ))
+    );
+
+  return (
+    <div className="App">
+        <Header text="movielist" />
+        <Search search={search} />
+
+        <p className="App-intro">Favourite movies</p>
+
+        <div className="movies">{retrievedMovies}</div>
     </div>
-  </div>
-)};
+  );
+
+};
 
 
 

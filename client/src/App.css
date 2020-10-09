@@ -15,12 +15,6 @@
   cursor: pointer;
 }
 
-
-.spinner {
-  height: 80px;
-  margin: auto;
-}
-
 .App-intro {
    font-size: large;
 }
@@ -33,16 +27,6 @@
 
 .App-header h2 {
   margin: 0;
-}
-
-.add-movies {
-  text-align: center;
-}
-
-.add-movies button {
-  font-size: 16px;
-  padding: 8px;
-  margin: 8px;
 }
 
 .movie {
