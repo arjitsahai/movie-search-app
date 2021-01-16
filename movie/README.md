@@ -1,6 +1,6 @@
 #Movie Search App
 
-The application is based on react An using OMDB API to pull the data feed
+The application is based on react and using OMDB API to pull the data feed
 
 
 
